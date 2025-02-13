@@ -64,11 +64,14 @@ export class ProductsController {
       .pipe(
         catchError( err => { throw new RpcException(err) })
       )
-  }
-
-  @Delete(':id')
-  DeleleProduct(@Param('id') id: string) {
-    return 'Esta funcion elimina el producto: ' + id
-  }
+    }
+    
+    @Delete(':id')
+    DeleleProduct(@Param('id', ParseIntPipe ) id: number) {
+      return this.productClientMicro.send({ cmd: 'delete_product'}, { id })
+      .pipe(
+        catchError( err => { throw new RpcException(err) })
+      )
+    }
 
 }
