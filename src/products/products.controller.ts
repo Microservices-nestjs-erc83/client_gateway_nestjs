@@ -3,6 +3,7 @@ import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { catchError, firstValueFrom } from 'rxjs';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { PRODUCT_SERVICE } from 'src/config';
+import { CreateProductDto } from './dto/create-product.dto';
 
 
 @Controller('products')
@@ -12,8 +13,11 @@ export class ProductsController {
   ) {}
 
   @Post()
-  createProduct() {
-    return 'crea un producto'
+  createProduct(@Body() createProductDto: CreateProductDto) {
+    return this.productClientMicro.send({ cmd: 'create_product' }, createProductDto )
+      .pipe(
+        catchError( err => { throw new RpcException(err) })
+      )
   }
 
   @Get()
