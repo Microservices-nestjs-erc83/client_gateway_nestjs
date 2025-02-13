@@ -4,6 +4,7 @@ import { catchError, firstValueFrom } from 'rxjs';
 import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { PRODUCT_SERVICE } from 'src/config';
 import { CreateProductDto } from './dto/create-product.dto';
+import { UpdateProductDto } from './dto/update-product.dto';
 
 
 @Controller('products')
@@ -52,11 +53,17 @@ export class ProductsController {
   }
 
   @Patch(':id')
-  updateProduct(
-      @Param('id') id: string,
-      @Body() body: any
+  async updateProduct(
+      @Param('id', ParseIntPipe ) id: number,
+      @Body() updateProductDto: UpdateProductDto
     ) {
-    return 'Esta funcion actualiza el producto: ' + id
+
+    //return { id, updateProductDto} 
+
+    return this.productClientMicro.send({ cmd: 'update_product'}, { id, ...updateProductDto} )
+      .pipe(
+        catchError( err => { throw new RpcException(err) })
+      )
   }
 
   @Delete(':id')
