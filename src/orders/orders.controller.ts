@@ -21,12 +21,12 @@ export class OrdersController {
 
   @Get()
   findAll() {
-    //return this.ordersService.findAll();
+    return this.orderClientMicro.send('findAllOrders', {});
   }
-
+  
   @Get(':id')
   findOne(@Param('id') id: string) {
-    //return this.ordersService.findOne(+id);
+    return this.orderClientMicro.send('findOneOrder', { id });
   }
 
 }
