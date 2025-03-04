@@ -27,7 +27,7 @@ export class OrdersController {
     //return this.orderClientMicro.send('findAllOrders', {});
   } */
   findAll( @Query() paginationOrderDto: PaginationOrderDto ) {
-    return paginationOrderDto
+    return this.orderClientMicro.send('findAllOrders',  paginationOrderDto)
     //return this.orderClientMicro.send('findAllOrders', {});
   }
   
