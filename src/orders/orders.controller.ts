@@ -4,7 +4,7 @@ import { ORDER_SERVICE } from 'src/config';
 import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { catchError, firstValueFrom } from 'rxjs';
 //import { PaginationDto } from 'src/common/dto/pagination.dto';
-import { PaginationOrderDto } from 'src/products/dto/pagination-order.dto';
+import { PaginationOrderDto } from 'src/orders/dto';
 
 @Controller('orders')
 export class OrdersController {
