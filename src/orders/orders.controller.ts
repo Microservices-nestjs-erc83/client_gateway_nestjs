@@ -5,6 +5,7 @@ import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { catchError, firstValueFrom } from 'rxjs';
 //import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { PaginationOrderDto } from 'src/orders/dto';
+import { PaginationDto } from 'src/common/dto/pagination.dto';
 
 @Controller('orders')
 export class OrdersController {
@@ -40,6 +41,24 @@ export class OrdersController {
       )
 
       return order;
+    } catch (error) {
+      throw new RpcException( error )
+    }
+
+  }
+
+  @Get('status/:status')
+  async findAllByStatus(@Param('status' ) status: string, @Query()  paginationDto : PaginationDto) {
+
+    try {
+
+      return { status, paginationDto }
+
+      //const order = await firstValueFrom(
+      //  this.orderClientMicro.send('findOneOrder', { id })
+      //)
+
+      //return order;
     } catch (error) {
       throw new RpcException( error )
     }
