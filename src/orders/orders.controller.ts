@@ -71,9 +71,15 @@ export class OrdersController {
     @Param( 'id', ParseUUIDPipe ) id: string,
     @Body() statusDto: StatusDto,
   ) {
-    return {
-      //id, ...statusDto
-      id, status: statusDto.status
+
+    try {
+      return this.orderClientMicro.send('changeOrderStatus', { 
+        id, 
+        status: statusDto.status 
+      })
+      
+    } catch (error) {
+      throw new RpcException( error )
     }
   }
 
