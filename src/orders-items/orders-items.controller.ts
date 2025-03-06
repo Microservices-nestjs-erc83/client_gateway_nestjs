@@ -18,8 +18,9 @@ export class OrdersItemsController {
 
   @Post()
   createOrderItem(@Body() createOrdersItemDto: CreateOrdersItemDto) {
-    
-    return { createOrdersItemDto }
+    return this.orderItemClientMicro.send('createOrdersItem', createOrdersItemDto)
+
+    //return { createOrdersItemDto }
   
   }
 
