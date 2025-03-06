@@ -13,14 +13,12 @@ import { ClientProxy } from '@nestjs/microservices';
 @Controller('orders-items')
 export class OrdersItemsController {
   constructor(
-    @Inject(ORDER_ITEM_SERVICE) private readonly orderItemClientMicro: ClientProxy
+    @Inject(ORDER_ITEM_SERVICE) private readonly orderItemClient: ClientProxy,
   ) {}
 
   @Post()
-  createOrderItem(@Body() createOrdersItemDto: CreateOrdersItemDto) {
-    return this.orderItemClientMicro.send('createOrdersItem', createOrdersItemDto)
-
-    //return { createOrdersItemDto }
+  create(@Body() createOrdersItemDto: CreateOrdersItemDto) {
+    return this.orderItemClient.send('createOrdersItem', createOrdersItemDto)
   
   }
 

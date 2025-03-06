@@ -5,15 +5,14 @@ import { envs, ORDER_ITEM_SERVICE } from 'src/config';
 
 @Module({
   controllers: [OrdersItemsController],
-  providers: [],
   imports:[
       ClientsModule.register([
         {
           name: ORDER_ITEM_SERVICE,
           transport: Transport.TCP,
           options: {
-            host: envs.ordersMicroserviceHost,
-            port: envs.ordersMicroservicePort
+            host: envs.ordersItemMicroserviceHost,
+            port: envs.ordersItemMicroservicePort
           }
         }
       ])
