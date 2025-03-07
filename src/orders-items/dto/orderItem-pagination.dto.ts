@@ -4,7 +4,7 @@ import { PaginationDto } from 'src/common/dto/pagination.dto';
 import { OrderItemStatus, OrderItemStatusList } from '../enum/orderItem.enum';
 
 
-export class OrderPaginationDto extends PaginationDto {
+export class OrderItemPaginationDto extends PaginationDto {
 
 
     @IsOptional()
