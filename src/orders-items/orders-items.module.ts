@@ -11,10 +11,10 @@ import { envs, ORDER_ITEM_SERVICE } from 'src/config';
           name: ORDER_ITEM_SERVICE,
           transport: Transport.TCP,
           options: {
-            host: envs.ordersItemMicroserviceHost,
-            port: envs.ordersItemMicroservicePort
+            //host: envs.ordersItemMicroserviceHost,
+            //port: envs.ordersItemMicroservicePort
           }
-        }
+        } 
       ])
     ]
 })
