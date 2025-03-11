@@ -28,19 +28,15 @@ $ yarn install
 
 ## 4. Tener levantados los microservicios que se van a consumir
 
-
-## 5. Levantar proyecto con:
-
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-```
-
-## 6 Usar Nats como microservicio
+## 5 Usar Nats como microservicio
 
 ```sh
 docker run -d --name nats-server -p 4222:4222 -p 8222:8222 nats
+```
+
+## 6. Levantar proyecto con:
+
+```bash
+# watch mode
+$ yarn run start:dev
 ```
